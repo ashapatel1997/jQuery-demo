@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, HostListener} 
 import * as $ from 'jquery';
 import { empty } from 'rxjs';
 import { error } from 'util';
+
 /** array properties for menu item
  * @param id for identification of item using number
  * @param name for display name of the menu item*/
@@ -96,6 +97,16 @@ export class AppComponent implements OnInit {
 
         //remove dropup and dropdown class from suboptions
         $(".sub-option").removeClass("dropup-content").removeClass("dropdown-content");
+
+        $("div.app-menu").addClass("fixed");
+        $(".app-header").addClass("hide-element");
+        appHeaderLogo.removeClass("hide-element");
+        appHeaderSignInBtn.removeClass("hide-element");
+
+        $(".app-header").css({ "background-color": "", "box-shadow": "" });
+        $("div.app-menu").css({ "background-color": "", "box-shadow": "" });
+        $(".sub-option").css({ "background-color": "" });
+
       }
     
 
@@ -116,6 +127,7 @@ export class AppComponent implements OnInit {
           //when scroll top is at offset 100 then fix bottom menu at top
           fixMenuTop(100);
 
+
           //sub-option dropup/dropdown
           changePosition();
         }
@@ -128,6 +140,15 @@ export class AppComponent implements OnInit {
 
           //remove dropup and dropdown class from suboptions
           $(".sub-option").removeClass("dropup-content").removeClass("dropdown-content");
+
+          $("div.app-menu").addClass("fixed");
+          $(".app-header").addClass("hide-element");
+          appHeaderLogo.removeClass("hide-element");
+          appHeaderSignInBtn.removeClass("hide-element");
+
+          $(".app-header").css({ "background-color": "", "box-shadow": "" });
+          $("div.app-menu").css({ "background-color": "", "box-shadow": "" });
+          $(".sub-option").css({ "background-color": "" });
         }
 
         else {
@@ -157,11 +178,22 @@ export class AppComponent implements OnInit {
           if (windowWidth >= 768) {
             //sub-option dropup/dropdown
             changePosition();
+
+           
           }
 
           else {
             //remove dropup and ropdown class from suboptions
             $(".sub-option").removeClass("dropup-content").removeClass("dropdown-content");
+
+            $("div.app-menu").addClass("fixed");
+            $(".app-header").addClass("hide-element");
+            appHeaderLogo.removeClass("hide-element");
+            appHeaderSignInBtn.removeClass("hide-element");
+
+            $(".app-header").css({ "background-color": "", "box-shadow": "" });
+            $("div.app-menu").css({ "background-color": "", "box-shadow": "" });
+            $(".sub-option").css({ "background-color": "" });
           }
           });
 
@@ -333,7 +365,14 @@ export class AppComponent implements OnInit {
         var $trigger = $(".menu-list");
         if (!$trigger.has(event.target).length) {
           $(".menu-list li ").children(".sub-option").css("display", "none");
+       
         }
+
+        else {
+         
+        }
+
+        
       });
 
     });
