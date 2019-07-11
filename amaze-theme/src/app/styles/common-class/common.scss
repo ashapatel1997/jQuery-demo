@@ -1,0 +1,56 @@
+/*mixins command variable import*/
+@import '../mixins & variables/_mixins.scss';
+@import '../mixins & variables/_variables.scss';
+
+
+/*font-family:Open Sans*/
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
+body { font-family: 'Open Sans', sans-serif; color: #373737; }
+html { font-weight: $mb-0; }
+
+
+/*text and background color*/
+.text-deep-orange { color: $deep-orange; }
+.text-black { color:black;}
+.text-white{color:white;}
+
+.bg-deep-orange { background-color: $deep-orange; }
+.bg-black { background-color:black;}
+.bg-light-blue { background-color: #10B6DD ;}
+.bg-light-yellow { background-color: #ffffcc ;}
+.bg-blue { background-color: #141a46 ;}
+.bg-white{background-color:white;}
+.bg-pink { background-color: #ccccff; }
+
+/*app header background*/
+.header-background { background-color: #ffffff; box-shadow: 0px 0px 1px grey; }
+
+
+
+/*line saperator*/
+.border { border: 4px solid $deep-orange !important; width: 50px; margin:40px auto 55px auto;}
+
+/*maximum screen width 425px ( Extra small devices )*/
+@media only screen and (max-width:425px) {
+  .border { border: 2px solid $deep-orange !important; width: 40px; margin: 15px auto 30px auto; }
+}
+
+/*bottom border*/
+.border-bottom-black { border-bottom: 1px solid #373737; }
+
+
+/*active class applies to the active link*/
+.active-link { color: $deep-orange!important; border-bottom: 2px solid $deep-orange; }
+
+/*erroe message in form*/
+.error-message{
+  color:red;
+}
+
+/*placeholder text color*/
+::placeholder { color: white; }
+
+/*outline of input field in sign in form */
+.input-field-outline{background-color:red;}
+

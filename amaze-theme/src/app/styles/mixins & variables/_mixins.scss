@@ -1,0 +1,44 @@
+@import 'variables';
+
+/*--------------Mixins--------------------*/
+
+/*mixin for slider banner backgound*/
+@mixin slider-banner-background($src) { background: url($src); background-attachment: fixed;  background-repeat: no-repeat; background-size: cover;  }
+
+
+/*mixin for portfolio background*/
+@mixin portfolio-background($src) { background: url($src);  background-repeat: no-repeat; background-size: cover; opacity:1;}
+
+
+/*mixin for plan section font style*/
+@mixin font($font-size,$font-weight) { font-size: $font-size; font-weight: $font-weight; }
+
+
+/*mixin form button styles*/
+
+@mixin button-style($bg,$height, $width,$font-size, $mt) { background-color: $bg; height: $height; width: $width; font-size: $font-size; margin-top: $mt }
+
+
+/*mixin for section top-bottom spacing*/
+@mixin section-top-bottom-spacing($top,$bottom) { padding-top: $top; padding-bottom: $bottom; }
+
+
+/*------------Animation------------*/
+
+/*portfolio section colck-wise rotation and scale increase with content hover*/
+@keyframes rotate-portfolio-description {
+  0% { transform: rotate(0deg) scale(0,0); }
+
+  30% { transform: rotate(360deg) scale(0.5,0.5); }
+
+  100% { transform: scale(1,1); }
+}
+
+/*portfolio section colck-wise rotation and scale decrease when pointer left focus*/
+@keyframes rotate-reverse-portfolio-description {
+  0% { transform: scale(1,1); }
+
+  30% { transform: rotate(0deg) scale(0.5,0.5); }
+
+  100% { transform: rotate(360deg) scale(0,0); }
+}

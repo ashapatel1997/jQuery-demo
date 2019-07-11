@@ -1,0 +1,681 @@
+@import './styles/common-class/common.scss';
+
+
+
+/*-----------Sign In Modal--------------*/
+
+/* sign in form modal */
+.sign-in-modal {display:none; position: fixed; z-index: 2;  left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4);  }
+
+/* sign in Modal Content */
+.sign-in-modal-content {  position: absolute; top: 25%; background-color: white; left: 30%; border: 1px solid #888888; width: 40%; height: auto;
+  
+  .sign-in-model-heading {
+    margin-top: 10px;
+    @include font(30px,$bold);
+    text-align: center;
+    color: $deep-orange;
+  }
+
+  .sign-in-form { padding: 20px 30px; width: 80%; margin-left: 10%;
+    .form-group {
+      label { }
+      input { }
+    }
+    .submit-btn {
+      color: white;
+      @include button-style($deep-orange,40px,145px,$medium-font,5px);
+      padding: 0px;
+      margin-bottom: 10px;
+      &:hover { background-color: #d85b0e; }
+      &:focus { box-shadow: none; }
+      &:active { box-shadow: none; }
+    }
+  }
+}
+
+
+/*----------TOP HEADER--------------*/
+.app-header { height: 50px; width: 100%; position: fixed; top: 0; z-index: 999; 
+}
+
+/*app logo*/
+.app-header-logo {  height: 100%; width:20%; display: inline-block; 
+  h4 {
+    float:right;
+    @include font(30px,$bold);
+    margin-bottom: 0px;
+    padding-top: 7px;
+  }
+}
+
+/*sign in button*/
+.app-header-sign-in-btn { height: 100%; width:20%; position: absolute; right: 0%;  display: inline-block;
+  .fa-sign-in {
+    @include font(25px,$bold);
+    color: $deep-orange;
+    padding-top: 13px;
+    cursor: pointer;
+  }
+}
+
+/*----------BOTTOM MENU--------------*/
+.fixed { position: fixed !important; bottom: unset; top: 0; z-index: 999;  }
+.app-menu { position: absolute; bottom: 0; width: 100%; height: 50px; z-index: 2; background-color:lightgray;  }
+
+/*bottom/top menu section*/
+.nav { position: absolute; height: 100%; display: inline-block; left: 20%; width: 60%; margin-top: 0px !important; font-size: $small-font; font-weight: $bold;
+  ul { list-style-type: none; padding: 0; right: 2%; float: right;
+    li { display: inline-block; padding: 17px 10px;
+      a { color: $text-color; display: block; text-align: center; text-decoration: none; font-weight: $bold;
+        &:hover { color: $deep-orange; cursor: pointer; }
+      }
+    }
+  }
+}
+
+
+//sub-option in bottom/top menu
+.sub-option { background-color: lightgray; display: none;padding-bottom:10px!important;
+  li { display: block !important; padding: 10px 10px 5px 10px !important;
+    a {}
+  }
+}
+
+//menu toggle button 
+.navbar-toggler{position:absolute;top:20%;right:0;}
+
+/*-----------section-1 (HOME)-------------*/
+.home-section { z-index: 1;
+  .slide-indicators { margin-bottom: 70px;
+    li { background-color: $deep-orange !important; }
+  }
+}
+
+//slide-height
+.slide-height { height: 100vh ; }
+
+//slide-1
+.slide-1 {
+  @include slider-banner-background("../assets/section-1-bg.jpg");
+}
+
+//slide-2
+.slide-2 {
+  @include slider-banner-background("../assets/section-1(1)-bg.jpg");
+}
+
+//slide-3
+.slide-3 {
+  @include slider-banner-background("../assets/section-1(2)-bg.jpg");
+}
+
+
+//slide caption
+.slide-caption { top: 20%; color: black;
+  .slide-heading {
+    width: 75%;
+    margin: 0px auto;
+    line-height: 1.3;
+    @include font($extra-large-font,$semi-bold);
+  }
+  .slide-sub-heading {
+    @include font($larg-font,$normal);
+  }
+  .btn {
+    @include button-style($deep-orange,50px,185px,$medium-font,$mt-10);
+    &:hover { background-color: #d85b0e; }
+    &:focus { box-shadow: none; }
+    &:active { box-shadow: none; }
+  }
+}
+
+
+
+
+/*-----------section-2 (ABOUT)-----------*/
+
+//about section heading
+.about-section { background-color: black; color: #8e8888;
+  .about-section-header {
+    .section-header-content {
+      .section-heading {
+        color: $deep-orange;
+        margin-bottom: $mb-15;
+        @include font($extra-large-font,$semi-bold);
+      }
+      .section-sub-heading {
+        width: 75%;
+        margin: 0 auto;
+        @include font($larg-font,$normal);
+      }
+    }
+  }
+}
+
+//about section content
+.about-section-content { width: 90%;
+  .content-grid { padding: 0px 15px;
+    img { height: 100%; border: none; }
+    .content-data-heading {
+
+      @include font(25px,$semi-bold);
+    }
+    ul { padding: 20px 0px 0px;
+      li {
+        padding-bottom: $pb-10;
+        @include font($larg-font,$normal);
+      }
+    }
+  }
+}
+
+
+/*---------section-3 (SERVICES)----------*/
+
+//services section heading
+.services-section { background-color: $light-grey;
+  .services-section-header {
+    .section-header-content {
+      .section-heading {
+        color: $deep-orange;
+        margin-bottom: $mb-15;
+        @include font($extra-large-font,$semi-bold);
+      }
+      .section-sub-heading {
+        width: 75%;
+        margin: 0 auto;
+        @include font($larg-font,$normal);
+      }
+    }
+  }
+}
+
+//services section content
+.service-section-content { width: 90%;
+
+  .content-grid { padding: 0px 15px; margin-bottom: $mb-30;
+    .content-card { background-color: $light-grey; border: none;
+      .card-img-top { border-radius: unset; }
+      .card-body { padding: 40px 0px 0px 0px;
+        .body-heading {
+          @include font($larg-font,$semi-bold);
+        }
+        .body-heading-lead {
+          padding-top: 15px !important;
+          @include font($medium-font,$normal);
+        }
+      }
+    }
+  }
+}
+
+
+/*---------section-4 (PORTFOLIO)----------*/
+
+//portfolio section heading
+.portfolio-section { background-color: #000000; color: #8e8888; 
+  .portfolio-section-header {
+    .section-header-content {
+      .section-heading {
+        color: $deep-orange;
+        margin-bottom: $mb-15;
+        @include font($extra-large-font,$semi-bold);
+
+
+        &:hover {
+          transition: 2s;
+          @include font($larg-font,$bold);
+        }
+      }
+      .section-sub-heading {
+        width: 75%;
+        margin: 0 auto;
+
+        @include font($larg-font,$normal);
+
+        &:hover {
+          transition: 2s;
+          @include font($medium-font,$semi-bold);
+        }
+      }
+    }
+  }
+}
+
+//portfolio section content
+.portfolio-section-content { width: 90%; padding-top: 20px;
+  .content-grid { margin-bottom: $mb-30; padding: 0px 15px;
+    .content-card { border: none; height: 100%; border-radius: 0px; cursor: pointer;
+      .image { height: 100%; width: 100%; border: none; border-radius: 0px; position: absolute; }
+      &:hover { box-shadow: 0px 0px 20px #f2f2f2; transform: scale(1.01); transition: all 0.5s ease-in-out;
+        .overlay { opacity: 1; animation: rotate-portfolio-description 1s 1 forwards; }
+      }
+    }
+  }
+}
+
+//portfolio overalays
+.overlay { z-index: 999; opacity: 0;
+  .card-body { opacity: 0.9; margin: 25px;
+    .body-heading {
+      cursor: auto;
+      @include font($larg-font,$semi-bold);
+
+      .fa-star-half-o {
+        @include font($extra-large-font,$semi-bold);
+      }
+    }
+    .body-heading-lead {
+      cursor: auto;
+      @include font($medium-font,$normal);
+    }
+    ul { margin: 0 auto;
+      li { margin: 5px !important; }
+    }
+    .view-more-btn {
+
+      @include button-style($deep-orange,40px,90%,$medium-font,$mt-0);
+      color: white;
+
+      &:hover { background-color: #d85b0e; }
+      &:focus { box-shadow: none; }
+      &:active { box-shadow: none; }
+    }
+  }
+  animation: rotate-reverse-portfolio-description 1s 1 forwards; transition: all 1s ease-in-out; }
+
+
+/*---------section-5 (TEAM)----------*/
+
+//team section heading
+.team-section { background-color: $light-grey;
+  .team-section-header {
+    .section-header-content {
+      .section-heading {
+        color: $deep-orange;
+        margin-bottom: $mb-15;
+        @include font($extra-large-font,$semi-bold);
+      }
+      .section-sub-heading {
+        width: 75%;
+        margin: 0 auto;
+        @include font($larg-font,$normal);
+      }
+    }
+  }
+}
+
+//team section content and memeber image
+.team-section-content { width: 90%;
+  .content-grid { margin-bottom: $mb-30; padding: 0px 15px;
+    .content-card { padding: 0px; border: 1px solid #e6e6e6; opacity: 0.9; background-color: #f2f2f2;
+      .team-member-img { padding: 10px; }
+      &:hover { cursor: pointer; opacity: 1; background-color: white; box-shadow: 0px 0px 10px #d9d9d9; transform: scale(1.01,1.01); transition: all 0.5s ease-out;
+        .team-member-img { }
+      }
+    }
+  }
+}
+
+//team section memeber details
+.card-body { padding: 10px;
+  .member-name {
+    padding-top: $pt-10;
+    text-align: center;
+    @include font($larg-font,$semi-bold);
+  }
+  .member-designation {
+    text-align: center;
+    @include font($medium-font,$normal);
+  }
+  .member-description { margin-top: $mt-20; font-size: $small-font; }
+  .member-view-profile-button {
+    @include button-style($deep-orange,40px,155px,$medium-font,$mt-10);
+    color: white;
+    //background-color: $deep-orange !important;
+    width: 100%;
+    margin-left: 0%;
+    &:hover { background-color: #d85b0e; }
+    &:focus { box-shadow: none; }
+    &:active { box-shadow: none; }
+  }
+}
+
+
+/*-----------section-6 (PRICING)---------*/
+
+//pricing section heading
+.pricing-section { background-color: black; color: #8e8888;
+  .pricing-section-header {
+    .section-header-content {
+      .section-heading {
+        color: $deep-orange;
+        margin-bottom: $mb-15;
+        @include font($extra-large-font,$semi-bold);
+      }
+      .section-sub-heading {
+        width: 75%;
+        margin: 0 auto;
+        @include font($larg-font,$normal);
+      }
+    }
+  }
+}
+
+//pricing section content
+.pricing-section-content { width: 90%;
+  .plan-content-grid { margin-bottom: 30px; padding: 0px 15px; }
+}
+
+//content inner row for plan description
+.plan-content-inner-row { padding: 10px; background-color: #f2f2f2; border-radius: 5px; /*plan name*/ .plan-type-grid { border-bottom: 1px solid #e6e6e6;
+    .plan-type-name {
+
+      @include font($larg-font,$semi-bold);
+    }
+  }
+  /*plan price*/ .plan-price-grid { border-bottom: 1px solid #e6e6e6;
+    .plan-price-value {
+      @include font($larg-font,$semi-bold);
+    }
+  }
+  /*plan support time*/ .plan-support-grid { border-bottom: 1px solid #e6e6e6;
+    .plan-support-time {
+      @include font($medium-font,$normal);
+    }
+  }
+  /*domain*/ .plan-buy-grid { padding: 5px;
+    .plan-buy-domain {
+      @include font($medium-font,$normal);
+    }
+    .plan-buy-btn {
+      @include font($medium-font,$normal);
+      background-color: $deep-orange;
+      width: 80%;
+      margin-left: 10%;
+      color: white;
+      &:hover { background-color: #d85b0e !important; }
+      &:focus { box-shadow: none !important; }
+      &:active { box-shadow: none !important; }
+    }
+  }
+}
+
+
+/*-----------section-7 (CONTACT)---------*/
+
+//contact section
+.contact-section { padding-top: $pt-80; padding-bottom: $pb-50; background: url("../assets/service-1.jpg"); background-attachment: fixed; background-size: 100% 100%;
+  .contact-section-content { color: white; width: 90%; }
+}
+
+//contact section content (heading, subscribtion form)
+.section-grid { margin-bottom: $mb-30; padding: 0px 15px; /*left heading*/ h1 {
+    @include font(30px,$semi-bold);
+  }
+  /*email input*/ form {
+    .form-group {
+      input { color: white; background: none; border: none; border-bottom: 1px solid white; border-radius: unset;
+        &:focus { box-shadow: none; }
+        &:active { box-shadow: none; }
+      }
+    }
+  }
+  /*subscribe button*/ button { background-color: $deep-orange; color: white; width: 80%; margin-left: 20%; margin-bottom: 1rem;
+    &:hover { background-color: #d85b0e; }
+    &:focus { box-shadow: none; }
+    &:active { box-shadow: none; }
+  }
+}
+
+
+/*-----------------FOOTER------------------*/
+
+//footer top
+.footer-main-container { background-color: #404040; }
+
+.footer-top-section { width: 90%; padding: 50px 0px;
+  .section-grid { padding: 0px 15px; }
+}
+
+.section-inner-row {
+  .footer-heading {
+    h1 {
+      color: #a6a6a6;
+      @include font(25px,$semi-bold);
+    }
+  }
+  .description {
+    @include font(15px,$normal);
+    a { margin-right: 10px;
+      i { border-radius: 50%; border: 1px solid white; font-size: 15px; padding-top: 7px; margin-top: 5px; width: 30px; height: 30px; text-align: center;
+        &:hover { background-color: $deep-orange; }
+      }
+    }
+  }
+}
+
+//copyright
+.copyright { background-color: #262626; font-size: $medium-font; }
+
+
+/*responsive breakpoints*/
+
+// Extra small devices (portrait phones, less than 576px)
+@media only screen and (max-width:575.98px){
+}
+
+// Small devices (landscape phones, less than 768px)
+@media only screen and (max-width:767.98px) and (min-width:576px) {
+  /*----------TOP HEADER--------------*/
+  .app-header { height: 40px; width: 100%; position: fixed; top: 0; z-index: 999; }
+
+  /*app logo*/
+  .app-header-logo { height: 100%; width: 20%; display: inline-block;
+    h4 {
+      float: right;
+      @include font(25px,$bold);
+      margin-bottom: 0px;
+      padding-top: 4px;
+    }
+  }
+
+  /*sign in button*/
+  .app-header-sign-in-btn { height: 100%; width: 10%; position: absolute; right: 0%; display: inline-block;
+    .fa-sign-in {
+      @include font(20px,$bold);
+      color: $deep-orange;
+      padding-top: 10px;
+      cursor: pointer;
+    }
+  }
+
+  /*----------BOTTOM MENU--------------*/
+  .fixed { position: fixed !important; bottom: unset; top: 0; z-index: 999;  }
+  .app-menu { position: absolute; bottom: 0; width: 100%; height: 40px; z-index: 2; background-color: lightgray; }
+
+  /*bottom/top menu section*/
+  .nav { position: absolute; height: 100%; display: inline-block; left: 20%; width: 70%; margin-top: 0px !important; font-size: $small-font; font-weight: $bold;
+    ul { height: 100%; list-style-type: none; padding: 0; margin-right: 50px;top:10%; float: right; background-color: white; width: auto;
+      li { display: block; padding: 17px 10px;
+        a { color: $text-color; display: block; text-align: center; text-decoration: none; font-weight: $bold;
+          &:hover { color: $deep-orange; }
+        }
+      }
+    }
+  }
+
+ 
+  //sub-option in bottom/top menu
+  .sub-option { background-color: lightgray; display: none;margin:10px 0px!important;background-color:lightgray!important;
+    li { display: block !important; padding: 10px 10px 5px 10px !important; 
+      a { }
+    }
+  }
+
+  .navbar-toggler { position: absolute; top: 13%; right: 2%; }
+}
+
+
+
+// Medium devices (tablets, less than 992px)
+@media only screen and (max-width:991.98px) and (min-width:768px) {
+ 
+
+  /*----------TOP HEADER--------------*/
+
+  /*app logo*/
+  .app-header-logo { height: 100%; width: 20%; display: inline-block;
+    h4 {
+      float: left;
+     margin-left:45px; 
+    }
+  }
+
+  /*sign in button*/
+  .app-header-sign-in-btn {  width: 10%; 
+  }
+
+
+  /*----------BOTTOM MENU--------------*/
+ 
+  /*bottom/top menu section*/
+  .nav {  left: 20%; width: 70%; }
+
+}
+
+// Large devices (desktops, less than 1200px)
+@media only screen and (max-width:1199.98px) and (min-width:992px) {
+}
+
+
+
+
+/*------------------Responsive design for section-1 (HOME)*/
+/*maximum screen width 400px*/
+@media only screen and (max-width:400px) {
+
+  /*-----------section-1 (HOME)-------------*/
+
+  //slide-height
+  // .slide-height { height: 50vh; }
+
+  //slide caption
+  .slide-caption { top: 20%; color: black; left: 0%; right: 0%;
+    .slide-heading {
+      width: 50%;
+      margin: 0px auto;
+      line-height: 1.3;
+      @include font($medium-font,$semi-bold);
+    }
+    .slide-sub-heading {
+      padding-top: 5px;
+      @include font($small-font,$normal);
+    }
+    .btn {
+      @include button-style($deep-orange,30px,145px,$small-font,5px);
+      padding: 0px;
+    }
+  }
+}
+
+/*screen width between 401px and 508px*/
+@media only screen and (min-width:401px) and (max-width:508px) {
+
+  /*-----------section-1 (HOME)-------------*/
+
+  //slide-height
+  //.slide-height { height: 60vh; }
+
+  //slide caption
+  .slide-caption { top: 25%; color: black; left: 15%; right: 15%;
+    .slide-heading {
+      width: 65%;
+      @include font($medium-font,$semi-bold);
+    }
+    .slide-sub-heading {
+      padding-top: 5px;
+      @include font(10px,$normal);
+    }
+    .btn {
+      @include button-style($deep-orange,30px,145px,$small-font,0px);
+      padding: 0px;
+    }
+  }
+}
+
+/*screen width between 509px and 600px*/
+@media only screen and (min-width:509px) and (max-width:600px) {
+
+  /*-----------section-1 (HOME)-------------*/
+  //slide-height
+  //.slide-height { height: 60vh; }
+
+  //slide caption
+  .slide-caption { left: 10%; right: 10%;
+    .slide-heading {
+      width: 80%;
+      @include font(30px,$semi-bold);
+    }
+    .slide-sub-heading {
+      width: 100%;
+      padding-top: 5px;
+      @include font($medium-font,$normal);
+    }
+    .btn {
+      @include button-style($deep-orange,40px,155px,$medium-font,10px);
+      padding: 0px;
+    }
+  }
+}
+
+/*screen width between 601px and 768px*/
+@media only screen and (min-width:601px) and (max-width:768px) {
+
+  /*-----------section-1 (HOME)-------------*/
+
+
+  //slide caption
+  .slide-caption { top: 25%; color: black; left: 10%; right: 10%;
+    .slide-heading {
+      width: 70%;
+      @include font(30px,$semi-bold);
+    }
+    .slide-sub-heading {
+      padding-top: 5px;
+      @include font(15px,$normal);
+    }
+    .btn {
+      @include button-style($deep-orange,40px,145px,15px,5px);
+      padding: 0px;
+    }
+  }
+}
+
+
+/*screen width between 769px and 1024px*/
+@media only screen and (min-width:769px) and (max-width:1024px) {
+
+  /*-----------section-1 (HOME)-------------*/
+
+  //slide caption
+  .slide-caption {
+    .slide-heading { width: 100%; }
+  }
+}
+
+
+
+/*hide element*/
+.hide-element { display: none; }
+/*active class applies to the active link*/
+.active-link { color: $deep-orange !important; border-bottom: 2px solid $deep-orange;
+  
+}
+
+/*bottom menu suboptions position*/
+.dropup-content {  position: absolute; width:200px; bottom: 50px;left:0px; z-index: 1; }
+.dropdown-content { position: absolute; width: 200px; top: 50px;left:0px; z-index: 1; }
+//.dropdown-menu-list { position: absolute; width: 200px; top: 40px; left: 0px; z-index: 1; }
+.dropup-menu-list { position: absolute; width: 200px; bottom: 100%; left: 0px; z-index: 1; }
