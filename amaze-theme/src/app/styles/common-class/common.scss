@@ -54,3 +54,61 @@ html { font-weight: $mb-0; }
 /*outline of input field in sign in form */
 .input-field-outline{background-color:red;}
 
+
+/* section top-bottom spacing*/
+.section-top-bottom-spacing {
+  @include section-top-bottom-spacing($pt-80,$pb-80);
+}
+
+
+/*section heading*/
+.section-heading {
+  color: $deep-orange;
+  margin-bottom: $mb-15;
+  @include font($extra-large-font,$semi-bold);
+}
+
+/*section sub heading*/
+.section-sub-heading {
+  width: 75%;
+  margin: 0 auto;
+  @include font($larg-font,$normal);
+}
+
+
+// Extra small devices (portrait phones, less than 576px)
+@media only screen and (max-width:575.98px) {
+  /*line saperator*/
+  .border { border: 2px solid $deep-orange !important; width: 50px; margin: 35px auto 35px auto; }
+
+  /* section top-bottom spacing*/
+  .section-top-bottom-spacing {
+    @include section-top-bottom-spacing($pt-30,$pb-30);
+  }
+
+  /*section heading*/
+  .section-heading { font-size: 30px; }
+
+  /*section sub heading*/
+  .section-sub-heading { width: 90%; padding: 0px !important; font-size: $medium-font; }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media only screen and (max-width:767.98px) and (min-width:576px) {
+  /* section top-bottom spacing*/
+  .section-top-bottom-spacing {
+    @include section-top-bottom-spacing($pt-50,$pb-50);
+  }
+
+  /*section heading*/
+  .section-heading { font-size: 40px; }
+
+  /*section sub heading*/
+  .section-sub-heading { width: 75%; padding: 0px !important; font-size: $medium-font; }
+
+}
+
+
+// Medium devices (tablets, less than 992px)
+@media only screen and (max-width:991.98px) and (min-width:768px) {
+}
