@@ -63,7 +63,7 @@
 
 /*bottom/top menu section*/
 .nav { position: absolute; height: 100%; display: inline-block; left: 20%; width: 60%; margin-top: 0px !important; font-size: $small-font; font-weight: $bold;
-  ul { cursor: pointer; list-style-type: none; padding: 0; right: 2%; float: right; margin-right: 10px;
+  ul { cursor: pointer; list-style-type: none; padding: 0; right: 2%; float: right; 
     li { display: inline-block; padding: 17px 10px;
       a { color: $text-color; display: block; text-align: center; text-decoration: none; font-weight: $bold;
         &:hover { color: $deep-orange; }
@@ -814,7 +814,6 @@
 
 
 /*------------------Responsive design for section-1 (HOME)*/
-
 /*maximum screen width 400px*/
 @media only screen and (max-width:400px) {
 

@@ -1,8 +1,5 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, HostListener} from '@angular/core';
 import * as $ from 'jquery';
-import { empty } from 'rxjs';
-import { error } from 'util';
-
 
 @Component({
   selector: 'app-root',
@@ -11,11 +8,7 @@ import { error } from 'util';
   
 })
 
-
 export class AppComponent implements OnInit {
-
-  //get selected item from menu
-  selectedItem: string ="home";
   
   /** called after Angular has initialized all data-bound properties of a directive. */
   ngOnInit()
@@ -309,7 +302,6 @@ export class AppComponent implements OnInit {
         
       });
 
-    
 
       /*function call for user name  validation*/
       function validateUserName() {
@@ -344,26 +336,25 @@ export class AppComponent implements OnInit {
    
       //make list item active on click
       $(".menu-list li").click(function () {
-        var hasSubMenu = $(this).children(".sub-option");
-        //$("button.navbar-toggler").attr("aria-expanded", "true");
+        var selectedLink = $(this);
+        var hasSubMenu = selectedLink.children(".sub-option");
        
         if (hasSubMenu.length == 0) {
           $(".menu-list li ").find("a").removeClass("active-link");
           $(".menu-list li ").children(".sub-option").css("display", "none");
-          $(this).children("a").addClass("active-link");
-         
+          selectedLink.children("a").addClass("active-link");
         }
 
         else {
-          $(this).children(".sub-option").css("display", "block");
+          selectedLink.children(".sub-option").css("display", "block");
 
-          $(".menu-list > li > a").removeClass("active-link");
-          $(this).children("a").addClass("active-link");
-
+          //sub-option and it's parent item will be active on click sub-option 
           $(".menu-list li").find(".sub-option li ").click(function (e) {
-
+            var selectedSubOptionLink = $(this);
+            $(".menu-list > li > a").removeClass("active-link");
+            selectedLink.children("a").addClass("active-link");
             hasSubMenu.children("li a").removeClass("active-link"); 
-            $(this).children("a").addClass("active-link"); 
+            selectedSubOptionLink.children("a").addClass("active-link"); 
            
             
           });
@@ -380,7 +371,6 @@ export class AppComponent implements OnInit {
         }     
       });
 
-     
 
      //get testimonial slide content to display initially
       getSlideContent(slideIndex);
@@ -394,7 +384,7 @@ export class AppComponent implements OnInit {
           getSlideContent(slideIndex); 
         }
         else {
-          getNext(1);
+          getNextSlideIndex(1);
         }
 
       });
@@ -405,11 +395,11 @@ export class AppComponent implements OnInit {
        //if current slide = first testimonial content, then start from last content
         if (slideIndex == 1) {
           slideIndex = testimonialSliderContent.length + 1;
-          getNext(-1);
+          getNextSlideIndex(-1);
           
         }
         else {
-          getNext(-1);
+          getNextSlideIndex(-1);
         }
 
       });
@@ -419,7 +409,7 @@ export class AppComponent implements OnInit {
       *
       * @param number is the +1(for next) or -1(for previous)
       **/
-      function getNext(number) {
+      function getNextSlideIndex(number) {
         slideIndex += number;
         getSlideContent(slideIndex);
       }
