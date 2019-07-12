@@ -3,15 +3,6 @@ import * as $ from 'jquery';
 import { empty } from 'rxjs';
 import { error } from 'util';
 
-/** array properties for menu item
- * @param id for identification of item using number
- * @param name for display name of the menu item*/
-interface menuItem
-{
-  id: number;
-  name: string;
-}
-
 
 @Component({
   selector: 'app-root',
@@ -23,30 +14,13 @@ interface menuItem
 
 export class AppComponent implements OnInit {
 
-  //instance of the menuItem interface 
-  menuItems: menuItem[];
-
   //get selected item from menu
   selectedItem: string ="home";
-
   
   /** called after Angular has initialized all data-bound properties of a directive. */
   ngOnInit()
   {
     
-    
-    //menu item id,name,value
-    this.menuItems =
-      [
-      { id: 1, name:"home" },
-      { id: 2, name:"about" },
-      { id: 3, name:"services" },
-      { id: 4, name:"portfolio" },
-      { id: 5, name:"team"},
-      { id: 6, name: "pricing" },
-      { id: 7, name: "contact" }
-      ];
-
     //jquery code
     $(document).ready(function () {
      
@@ -83,6 +57,32 @@ export class AppComponent implements OnInit {
       //window view port width
       var windowWidth;
 
+      //testimonial slider content
+      var testimonialSliderContent = [
+        {
+          'testimonialImg': '../assets/testimonial.jpg',
+          'testimonialDesc': `Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components`
+        },
+        {
+          'testimonialImg': '../assets/testimonial-1.png',
+          'testimonialDesc': `A testimonial slider shows the testimonial text submitted by your customers.The testimonies are presented in a beautiful, modern and mobile friendly way. `
+        },
+        {
+          'testimonialImg': '../assets/testimonial-2.png',
+          'testimonialDesc': `The html() method sets or returns the content (innerHTML) of the selected elements. When this method is used to return content, it returns the content of the FIRST matched element.`
+        },
+      ]
+
+      //testimonial slider right arrow button
+      var sliderRightBtn = $(".testimonial-slider-right-btn");
+
+      //testimonial slider left arrow button
+      var sliderLeftBtn = $(".testimonial-slider-left-btn");
+
+      //index of the current testimonial slide
+      var slideIndex = 1;
+
+
       //function call to get window width
       resize();
 
@@ -98,11 +98,13 @@ export class AppComponent implements OnInit {
         //remove dropup and dropdown class from suboptions
         $(".sub-option").removeClass("dropup-content").removeClass("dropdown-content");
 
+        //for smaller screen menu will be fixed at top
         $("div.app-menu").addClass("fixed");
         $(".app-header").addClass("hide-element");
         appHeaderLogo.removeClass("hide-element");
         appHeaderSignInBtn.removeClass("hide-element");
 
+        //remove header and menu styles 
         $(".app-header").css({ "background-color": "", "box-shadow": "" });
         $("div.app-menu").css({ "background-color": "", "box-shadow": "" });
         $(".sub-option").css({ "background-color": "" });
@@ -138,14 +140,16 @@ export class AppComponent implements OnInit {
           //when scroll top is at offset 80 then fix bottom menu at top
           fixMenuTop(80);
 
-          //remove dropup and dropdown class from suboptions
+          //remove dropup and ropdown class from suboptions
           $(".sub-option").removeClass("dropup-content").removeClass("dropdown-content");
 
+          //for smaller screen menu will be fixed at top
           $("div.app-menu").addClass("fixed");
           $(".app-header").addClass("hide-element");
           appHeaderLogo.removeClass("hide-element");
           appHeaderSignInBtn.removeClass("hide-element");
 
+          //remove header and menu styles 
           $(".app-header").css({ "background-color": "", "box-shadow": "" });
           $("div.app-menu").css({ "background-color": "", "box-shadow": "" });
           $(".sub-option").css({ "background-color": "" });
@@ -183,14 +187,16 @@ export class AppComponent implements OnInit {
           }
 
           else {
-            //remove dropup and ropdown class from suboptions
+            //remove dropup and dropdown class from suboptions
             $(".sub-option").removeClass("dropup-content").removeClass("dropdown-content");
 
+            //for smaller screen menu will be fixed at top
             $("div.app-menu").addClass("fixed");
             $(".app-header").addClass("hide-element");
             appHeaderLogo.removeClass("hide-element");
             appHeaderSignInBtn.removeClass("hide-element");
 
+            //remove header and menu styles 
             $(".app-header").css({ "background-color": "", "box-shadow": "" });
             $("div.app-menu").css({ "background-color": "", "box-shadow": "" });
             $(".sub-option").css({ "background-color": "" });
@@ -283,9 +289,8 @@ export class AppComponent implements OnInit {
       /*sign in form validation*/
 
       //username feild validation
-
       userName.mouseleave(validateUserName).mouseenter(validateUserName);
-
+     
       // password field validation
       password.mouseleave(validatePassword).mouseenter(validatePassword);
 
@@ -299,9 +304,12 @@ export class AppComponent implements OnInit {
           $(".sign-in-modal").css("display", "none");
           userNameErrorMessage.hide();
           passwordErrorMessage.hide();
+          $(signInForm).trigger('reset');
         }
-        $(signInForm).trigger('reset');
+        
       });
+
+    
 
       /*function call for user name  validation*/
       function validateUserName() {
@@ -309,6 +317,7 @@ export class AppComponent implements OnInit {
         if (userNameLength == 0) {
           userNameErrorMessage.html("Please Enter User Name");
           userNameErrorMessage.show();
+          error_password = false;
         }
         else {
           error_userName = true;
@@ -320,9 +329,11 @@ export class AppComponent implements OnInit {
       function validatePassword() {
         var passwordLength = password.val().length;
 
+       
         if (passwordLength >= 0 && passwordLength < 8) {
           passwordErrorMessage.html("Atleast 8 character required");
           passwordErrorMessage.show();
+          error_password = false;
         }
         else {
           error_password = true;
@@ -363,17 +374,67 @@ export class AppComponent implements OnInit {
       //close submenu when click outside the menu list
       $(document).on("click", function (event) {
         var $trigger = $(".menu-list");
+        var $trigger1 = $(".app-menu");
         if (!$trigger.has(event.target).length) {
           $(".menu-list li ").children(".sub-option").css("display", "none");
-       
-        }
-
-        else {
-         
-        }
-
-        
+        }     
       });
+
+     
+
+     //get testimonial slide content to display initially
+      getSlideContent(slideIndex);
+
+       //on click of slider right arrow button, disply next content
+      sliderRightBtn.click(function () {
+
+        //if current slide = last testimonial content, then start from first  content
+        if (slideIndex == (testimonialSliderContent.length)) {
+          slideIndex = 1;
+          getSlideContent(slideIndex); 
+        }
+        else {
+          getNext(1);
+        }
+
+      });
+
+      //on click of slider left arrow button, disply previous content
+      sliderLeftBtn.click(function () {
+
+       //if current slide = first testimonial content, then start from last content
+        if (slideIndex == 1) {
+          slideIndex = testimonialSliderContent.length + 1;
+          getNext(-1);
+          
+        }
+        else {
+          getNext(-1);
+        }
+
+      });
+
+
+      /** get next slide index
+      *
+      * @param number is the +1(for next) or -1(for previous)
+      **/
+      function getNext(number) {
+        slideIndex += number;
+        getSlideContent(slideIndex);
+      }
+
+      /**get content to display in testimonial slide
+        *
+        * @param slideIndex is the current slide index
+       **/
+      function getSlideContent(slideIndex)
+      {
+        var currentIndexContent = testimonialSliderContent[slideIndex-1];
+        $(".testimonial-description").html(currentIndexContent["testimonialDesc"]);
+        $(".testimonial-description").attr("title", currentIndexContent['testimonialDesc']);
+        $(".testimonial-image").attr("src", currentIndexContent['testimonialImg']);
+      }
 
     });
 

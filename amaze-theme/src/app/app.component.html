@@ -23,7 +23,9 @@
       <li data-toggle="collapse" data-target=".navbar-collapse.show" ><a href="#home" class="p-0  text-uppercase active-link">home</a></li>
         <li data-toggle="collapse" data-target=".navbar-collapse.show"><a href="#about" class=" p-0  text-uppercase ">about</a></li>
         <li class="dropup">
-          <a  class="p-0   text-uppercase">services</a>
+          <a class="p-0   text-uppercase">
+            services
+          </a>
           <ul class="sub-option  ">
             <li data-toggle="collapse" data-target=".navbar-collapse.show"><a href="#services" class=" p-0  text-uppercase ">web development</a></li>
             <li data-toggle="collapse" data-target=".navbar-collapse.show"><a href="#services" class="p-0 text-uppercase">mobile development</a></li>
@@ -38,13 +40,11 @@
       </div>
 
     </div>
-
     <div class="app-header-sign-in-btn"><i class="fa fa-sign-in " id="myBtn" data-toggle="tooltip" title="Sign In" aria-hidden="true"></i></div>
-
   </div>
 
 
-  <!-- SignIn Modal -->
+      <!-- SignIn Modal -->
       <div class="sign-in-modal">
 
         <!-- Modal content -->
@@ -462,7 +462,7 @@
           <!-- member-1 -->
           <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3  content-grid ">
             <div class="card content-card">
-              <img class="card-img-top team-member-img  " src="../assets/service-1.jpg" />
+              <img class="card-img-top team-member-img" src="../assets/service-1.jpg" />
               <div class="card-body  ">
                 <h1 class="card-title member-name">NAME</h1>
                 <h4 class="card-subtitle member-designation">Designation</h4>
@@ -528,13 +528,13 @@
       </section>
 
 
-      <!-- section 6 (PRICING) -->
-      <section class="container-fluid pricing-section  section-top-bottom-spacing " id="pricing">
+      <!-- section 6 (TESTIMONIAL) -->
+      <section class="container-fluid testimonial-section section-top-bottom-spacing " id="pricing">
 
-        <!-- pricing section header-->
-        <div class="row d-flex pricing-section-header ">
+        <!-- testimonial section header-->
+        <div class="row d-flex testimonial-section-header ">
           <div class="col-12 text-center section-header-content">
-            <h1 class="section-heading text-uppercase">PRICING</h1>
+            <h1 class="section-heading text-uppercase">testimonials</h1>
             <p class="lead px-5 section-sub-heading">
               Our built-in payment system allows your merchants to accept both paypal and
               all of major credit cards
@@ -542,72 +542,26 @@
           </div>
         </div>
 
-        <!--dash-->
+        <!--line saperator-->
         <div class="border mx-auto d-flex ">
         </div>
 
-        <!-- pricing section content -->
-        <div class="row d-flex  container-fluid pricing-section-content mx-auto  px-5 ">
+        <!-- testimonial section content -->
+        <div class="row d-flex  container-fluid testimonial-section-content mx-auto  px-5 ">
 
-          <!--Starter plan-->
-          <div class=" plan-content-grid col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 ">
-            <div class="row d-flex text-center plan-content-inner-row mx-0">
-              <div class="col-12 text-black  py-3 plan-type-grid  ">
-                <span class="plan-type-name">Starter</span>
-              </div>
-              <div class="col-12   py-3 plan-price-grid">
-                <span class="plan-price-value"> $ 6</span>
-              </div>
-              <div class="col-12  py-2 plan-support-grid">
-                <span class="plan-support-time"> 6 Months Support</span>
-              </div>
-              <div class="col-12 pt-2  plan-buy-grid ">
-                <span class="plan-buy-domain">  1 domain</span>
-                <button class="btn d-block mx-auto mt-4 plan-buy-btn">BUY NOW</button>
-              </div>
-            </div>
+          <!--Testimonial slider-->
+          <div class="content-grid col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 offset-md-3 offset-lg-3 offset-xl-3 offset-sm-2 ">
+
+            <!-- image src using jquery -->
+            <img class="testimonial-image " src=" " />
+
+            <h6 class="testimonial-description text-center" style="-webkit-box-orient: vertical;" data-toggle="tooltip" title="">
+              <!-- html content and tooltip using jquery -->
+            </h6>
+            <i class="fa fa-less-than"></i>
+            <button class="fa fa-angle-left testimonial-slider-left-btn testimonial-slider-btn"></button>
+            <button class="fa fa-angle-right testimonial-slider-right-btn testimonial-slider-btn"></button>
           </div>
-
-
-          <!--Business plan-->
-          <div class="plan-content-grid col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 ">
-            <div class="row d-flex text-center plan-content-inner-row mx-0">
-              <div class="col-12 border-bottom-black py-3 plan-type-grid text-black ">
-                <span class="plan-type-name">Business</span>
-
-              </div>
-              <div class="col-12 border-bottom-black py-3 plan-price-grid">
-                <span class="plan-price-value"> $ 21</span>
-              </div>
-              <div class="col-12 border-bottom-black py-2 plan-support-grid">
-                <span class="plan-support-time"> 6 Months Support</span>
-              </div>
-              <div class="col-12 pt-2  plan-buy-grid ">
-                <span class="plan-buy-domain">  1 domain</span>
-                <button class="btn d-block mx-auto mt-4 plan-buy-btn">BUY NOW</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Advance plan -->
-          <div class="plan-content-grid col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 ">
-            <div class="row d-flex text-center plan-content-inner-row mx-0">
-              <div class="col-12 border-bottom-black py-3 plan-type-grid text-black">
-                <span class="plan-type-name">Advanced</span>
-              </div>
-              <div class="col-12 border-bottom-black py-3 plan-price-grid">
-                <span class="plan-price-value"> $ 48</span>
-              </div>
-              <div class="col-12 border-bottom-black py-2 plan-support-grid">
-                <span class="plan-support-time"> 6 Months Support</span>
-              </div>
-              <div class="col-12 pt-2  plan-buy-grid ">
-                <span class="plan-buy-domain">  1 domain</span>
-                <button class="btn d-block mx-auto mt-4 plan-buy-btn">BUY NOW</button>
-              </div>
-            </div>
-          </div>
-
         </div>
 
       </section>

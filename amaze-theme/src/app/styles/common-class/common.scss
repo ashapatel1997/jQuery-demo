@@ -75,6 +75,12 @@ html { font-weight: $mb-0; }
   @include font($larg-font,$normal);
 }
 
+/*testimonial slider buttons*/
+.testimonial-slider-btn { position: absolute; background: unset; color: #8e8888; border: none; font-size: 50px; top: 40%;
+  &:hover { color: #b5b0b0; }
+  &:active { border: none; outline: unset; }
+  &:focus { border: none; outline: unset; }
+}
 
 // Extra small devices (portrait phones, less than 576px)
 @media only screen and (max-width:575.98px) {
@@ -83,7 +89,7 @@ html { font-weight: $mb-0; }
 
   /* section top-bottom spacing*/
   .section-top-bottom-spacing {
-    @include section-top-bottom-spacing($pt-30,$pb-30);
+    @include section-top-bottom-spacing($pt-40,$pb-40);
   }
 
   /*section heading*/
@@ -91,6 +97,9 @@ html { font-weight: $mb-0; }
 
   /*section sub heading*/
   .section-sub-heading { width: 90%; padding: 0px !important; font-size: $medium-font; }
+
+  /*testimonial slider buttons*/
+  .testimonial-slider-btn { font-size: 30px; top: 40%; }
 }
 
 // Small devices (landscape phones, less than 768px)
@@ -106,9 +115,8 @@ html { font-weight: $mb-0; }
   /*section sub heading*/
   .section-sub-heading { width: 75%; padding: 0px !important; font-size: $medium-font; }
 
+  /*testimonial slider buttons*/
+  .testimonial-slider-btn { font-size: 40px; top: 40%; }
+
 }
 
-
-// Medium devices (tablets, less than 992px)
-@media only screen and (max-width:991.98px) and (min-width:768px) {
-}
