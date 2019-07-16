@@ -10,26 +10,23 @@ body { font-family: 'Open Sans', sans-serif; color: #373737; }
 html { font-weight: $mb-0; }
 
 
-/*text and background color*/
+/*text,background color and shadow*/
 .text-deep-orange { color: $deep-orange; }
-.text-black { color:black;}
-.text-white{color:white;}
+.text-black { color: black; }
+.text-white { color: white; }
 
 .bg-deep-orange { background-color: $deep-orange; }
-.bg-black { background-color:black;}
-.bg-light-blue { background-color: #10B6DD ;}
-.bg-light-yellow { background-color: #ffffcc ;}
-.bg-blue { background-color: #141a46 ;}
-.bg-white{background-color:white;}
+.bg-black { background-color: black; }
+.bg-light-blue { background-color: #10B6DD; }
+.bg-light-yellow { background-color: #ffffcc; }
+.bg-blue { background-color: #141a46; }
+.bg-white { background-color: white; }
 .bg-pink { background-color: #ccccff; }
-
-/*app header background*/
-.header-background { background-color: #ffffff; box-shadow: 0px 0px 1px grey; }
-
+.grey-shadow { box-shadow: 0px 0px 1px grey; }
 
 
 /*line saperator*/
-.border { border: 4px solid $deep-orange !important; width: 50px; margin:40px auto 55px auto;}
+.border { border: 4px solid $deep-orange !important; width: 50px; margin: 40px auto 55px auto; }
 
 /*maximum screen width 425px ( Extra small devices )*/
 @media only screen and (max-width:425px) {
@@ -39,27 +36,38 @@ html { font-weight: $mb-0; }
 /*bottom border*/
 .border-bottom-black { border-bottom: 1px solid #373737; }
 
-
 /*active class applies to the active link*/
-.active-link { color: $deep-orange!important; border-bottom: 2px solid $deep-orange; }
+.active-link { color: $deep-orange !important; border-bottom: 2px solid $deep-orange; }
 
 /*erroe message in form*/
-.error-message{
-  color:red;
-}
+.error-message { color: red; }
 
 /*placeholder text color*/
 ::placeholder { color: white; }
 
 /*outline of input field in sign in form */
-.input-field-outline{background-color:red;}
-
+.input-field-outline { background-color: red; }
 
 /* section top-bottom spacing*/
 .section-top-bottom-spacing {
   @include section-top-bottom-spacing($pt-80,$pb-80);
 }
 
+/*fix menu at top*/
+.fix-menu-top { position: fixed !important; bottom: unset; top: 0; z-index: 999; }
+
+/*hide element*/
+.hide-element { display: none !important; }
+
+/*show element*/
+.show-element { display: block !important; }
+
+/*active class applies to the active link*/
+.active-link { color: $deep-orange !important; border-bottom: 2px solid $deep-orange; }
+
+/*bottom menu suboptions position*/
+.dropup-content { position: absolute; width: 200px; bottom: 50px; left: 0px; z-index: 1; }
+.dropdown-content { position: absolute; width: 200px; top: 50px; left: 0px; z-index: 1; }
 
 /*section heading*/
 .section-heading {
@@ -117,6 +125,4 @@ html { font-weight: $mb-0; }
 
   /*testimonial slider buttons*/
   .testimonial-slider-btn { font-size: 40px; top: 40%; }
-
 }
-

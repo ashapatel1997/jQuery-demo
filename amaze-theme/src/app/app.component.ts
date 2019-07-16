@@ -20,9 +20,6 @@ export class AppComponent implements OnInit {
       //get sign in form class
       var signInForm = $(".sign-in-form");
 
-      //get submit button class
-      var submitButton = $(".submit-btn");
-
       //get id of user name field
       var userName = signInForm.find("#useName");
 
@@ -43,10 +40,24 @@ export class AppComponent implements OnInit {
       userNameErrorMessage.hide();
       passwordErrorMessage.hide();
 
-      var appHeaderLogo = $("div.app-menu").find(".app-header-logo");
-      var appHeaderSignInBtn = $("div.app-menu").find(".app-header-sign-in-btn");
+      //find menu
+      var appMenu = $("div.app-menu");
+      //find suboptions in menu
+      var appMenuSubOptions = $(".sub-option");
+      //find header
+      var appHeader = $(".app-header");
 
-      
+      //amaze-theme logo in header
+      var appHeaderLogo = appMenu.find(".app-header-logo");
+      //sign in button in header
+      var appHeaderSignInBtn = appMenu.find(".app-header-sign-in-btn");
+
+      //find sign in modal class
+      var signInModal = $(".sign-in-modal")
+
+      //initially sign in model will be hidden
+      signInModal.addClass("hide-element");
+
       //window view port width
       var windowWidth;
 
@@ -75,32 +86,26 @@ export class AppComponent implements OnInit {
       //index of the current testimonial slide
       var slideIndex = 1;
 
-
       //function call to get window width
       resize();
 
       //change top-header and bottom-menu background and menu suboptions position
       windowWidth = $(window).width();
+
       if (windowWidth >= 768) {
         //sub-option dropup/dropdown
         changePosition();
       }
 
       else {
-
         //remove dropup and dropdown class from suboptions
-        $(".sub-option").removeClass("dropup-content").removeClass("dropdown-content");
+        removeDropupDropdown();
 
         //for smaller screen menu will be fixed at top
-        $("div.app-menu").addClass("fixed");
-        $(".app-header").addClass("hide-element");
-        appHeaderLogo.removeClass("hide-element");
-        appHeaderSignInBtn.removeClass("hide-element");
+        menuFixTop();
 
         //remove header and menu styles 
-        $(".app-header").css({ "background-color": "", "box-shadow": "" });
-        $("div.app-menu").css({ "background-color": "", "box-shadow": "" });
-        $(".sub-option").css({ "background-color": "" });
+        removeHeaderMenuStyle();
 
       }
     
@@ -122,36 +127,25 @@ export class AppComponent implements OnInit {
           //when scroll top is at offset 100 then fix bottom menu at top
           fixMenuTop(100);
 
-
           //sub-option dropup/dropdown
           changePosition();
         }
 
-        //if window width between 768 (small devices)
-        else if (windowWidth < 768) {
+        //if window width less than 768 (small devices)
+        else  {
 
           //when scroll top is at offset 80 then fix bottom menu at top
           fixMenuTop(80);
 
           //remove dropup and ropdown class from suboptions
-          $(".sub-option").removeClass("dropup-content").removeClass("dropdown-content");
+          removeDropupDropdown();
 
           //for smaller screen menu will be fixed at top
-          $("div.app-menu").addClass("fixed");
-          $(".app-header").addClass("hide-element");
-          appHeaderLogo.removeClass("hide-element");
-          appHeaderSignInBtn.removeClass("hide-element");
+          menuFixTop();
 
           //remove header and menu styles 
-          $(".app-header").css({ "background-color": "", "box-shadow": "" });
-          $("div.app-menu").css({ "background-color": "", "box-shadow": "" });
-          $(".sub-option").css({ "background-color": "" });
+          removeHeaderMenuStyle();
         }
-
-        else {
-          fixMenuTop(40);
-        }
-
       }
       
       /**fix bottm menu at top 
@@ -175,24 +169,17 @@ export class AppComponent implements OnInit {
           if (windowWidth >= 768) {
             //sub-option dropup/dropdown
             changePosition();
-
-           
           }
 
           else {
             //remove dropup and dropdown class from suboptions
-            $(".sub-option").removeClass("dropup-content").removeClass("dropdown-content");
+            removeDropupDropdown();
 
             //for smaller screen menu will be fixed at top
-            $("div.app-menu").addClass("fixed");
-            $(".app-header").addClass("hide-element");
-            appHeaderLogo.removeClass("hide-element");
-            appHeaderSignInBtn.removeClass("hide-element");
+            menuFixTop();
 
             //remove header and menu styles 
-            $(".app-header").css({ "background-color": "", "box-shadow": "" });
-            $("div.app-menu").css({ "background-color": "", "box-shadow": "" });
-            $(".sub-option").css({ "background-color": "" });
+            removeHeaderMenuStyle();
           }
           });
 
@@ -203,26 +190,22 @@ export class AppComponent implements OnInit {
        
       /*if scroll position > 50 then css to change header background color*/
         if ($(window).scrollTop() > 50) {
-          $(".app-header").css({ "background-color": "#ffffff", "box-shadow": "0px 0px 1px grey" });
-          $(".sub-option").css({ "background-color": "#ffffff" });
-          $("div.app-menu").css({ "background-color": "#ffffff", "box-shadow": "0px 0px 1px grey"});
+          addHeaderMenuStyle();
         }
 
         else {
-          $(".app-header").css({ "background-color": "", "box-shadow": "" });
-          $("div.app-menu").css({ "background-color": "", "box-shadow": "" });
-          $(".sub-option").css({ "background-color": ""});
+          removeHeaderMenuStyle()
         }
 
         //if bellow space is not sufficient then disply suboptions upward
         if ($(window).scrollTop() >= 0 && $(window).scrollTop() <= 68) {
           //add dropup class  and remove dropdown class to suboptions
-          $(".sub-option").addClass("dropup-content").removeClass("dropdown-content");
+          appMenuSubOptions.addClass("dropup-content").removeClass("dropdown-content");
         }
 
         else {
            //remove dropup class  and add dropdown class to suboptions
-          $(".sub-option").removeClass("dropup-content").addClass("dropdown-content");
+          appMenuSubOptions.removeClass("dropup-content").addClass("dropdown-content");
         }
 
       }
@@ -231,6 +214,7 @@ export class AppComponent implements OnInit {
        * 
        * @param height of bottom menu
        */
+
       function setPosition(height) {
 
         //scroll height from top
@@ -240,23 +224,19 @@ export class AppComponent implements OnInit {
       
         //change top-header and bottom-menu position
         if (scrollHeight > navHeight) {  
-          $("div.app-menu").addClass("fixed");
-          $(".app-header").addClass("hide-element");
-          appHeaderLogo.removeClass("hide-element");
-          appHeaderSignInBtn.removeClass("hide-element");
+          menuFixTop();
         }
 
         else {
-          $("div.app-menu").removeClass("fixed");
-          appHeaderLogo.addClass("hide-element");
-          appHeaderSignInBtn.addClass("hide-element");
-          $(".app-header").removeClass("hide-element");
+          menuFixBottom();
+          
         }
       }
       
       /*open sign in popup on sign in button click*/
       $(".fa-sign-in").click(function () {
-        $(".sign-in-modal").css("display", "block");
+        signInModal.removeClass("hide-element").addClass("show-element");
+       
         //by default first input field is focused
         signInForm.find('input').first().focus();
        
@@ -270,7 +250,7 @@ export class AppComponent implements OnInit {
         }
           
         else {
-          $(this).css("display", "none");
+          signInModal.removeClass("show-element").addClass("hide-element");
           userNameErrorMessage.hide();
           passwordErrorMessage.hide();
           $(signInForm).trigger('reset');
@@ -288,13 +268,14 @@ export class AppComponent implements OnInit {
       password.mouseleave(validatePassword).mouseenter(validatePassword);
 
       //ON sign in submit submit button click
-      submitButton.click(function () {
+      $(".submit-btn").click(function () {
         validateUserName();
         validatePassword();
 
         /*if field validation is completed then error_password=error_userName=true and close sign in modal*/
         if (error_password && error_userName) {
-          $(".sign-in-modal").css("display", "none");
+         
+          signInModal.removeClass("show-element").addClass("hide-element");
           userNameErrorMessage.hide();
           passwordErrorMessage.hide();
           $(signInForm).trigger('reset');
@@ -341,14 +322,15 @@ export class AppComponent implements OnInit {
        
         if (hasSubMenu.length == 0) {
           $(".menu-list li ").find("a").removeClass("active-link");
-          $(".menu-list li ").children(".sub-option").css("display", "none");
+          $(".menu-list li ").children(".sub-option").removeClass("show-element").addClass("hide-element");
           selectedLink.children("a").addClass("active-link");
         }
 
         else {
-          selectedLink.children(".sub-option").css("display", "block");
+      
+          selectedLink.children(".sub-option").addClass("show-element");
 
-          //sub-option and it's parent item will be active on click sub-option 
+          //sub-option and it's parent item will be active on click sub-option
           $(".menu-list li").find(".sub-option li ").click(function (e) {
             var selectedSubOptionLink = $(this);
             $(".menu-list > li > a").removeClass("active-link");
@@ -365,9 +347,9 @@ export class AppComponent implements OnInit {
       //close submenu when click outside the menu list
       $(document).on("click", function (event) {
         var $trigger = $(".menu-list");
-        var $trigger1 = $(".app-menu");
+        
         if (!$trigger.has(event.target).length) {
-          $(".menu-list li ").children(".sub-option").css("display", "none");
+          $(".menu-list li ").children(".sub-option").removeClass("show-element").addClass("hide-element");
         }     
       });
 
@@ -426,13 +408,42 @@ export class AppComponent implements OnInit {
         $(".testimonial-image").attr("src", currentIndexContent['testimonialImg']);
       }
 
+       /*remove dropup and ropdown class from suboptions*/
+      function removeDropupDropdown()
+      {
+        appMenuSubOptions.removeClass("dropup-content dropdown-content");
+      }
+
+      //menu fixed at top
+      function menuFixTop() {
+        appMenu.addClass("fix-menu-top");
+        appHeader.addClass("hide-element");
+        appHeaderLogo.removeClass("hide-element");
+        appHeaderSignInBtn.removeClass("hide-element");
+      }
+
+      //menu fixed at bottom
+      function menuFixBottom() {
+        appMenu.removeClass("fix-menu-top");
+        appHeaderLogo.addClass("hide-element");
+        appHeaderSignInBtn.addClass("hide-element");
+        appHeader.removeClass("hide-element");
+      }
+
+      //remove header and menu styles 
+      function removeHeaderMenuStyle() {
+        appHeader.removeClass("bg-white grey-shadow");
+        appMenu.removeClass("bg-white grey-shadow");
+        appMenuSubOptions.removeClass("bg-white ");
+      }
+
+      //add header and menu styles
+      function addHeaderMenuStyle() {
+        appHeader.addClass("bg-white grey-shadow");
+        appMenu.addClass("bg-white grey-shadow");
+        appMenuSubOptions.addClass("bg-white ");
+      }
+      
     });
-
-
-   
-    
   }
-
-  
- 
 }
